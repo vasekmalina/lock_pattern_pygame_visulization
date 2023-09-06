@@ -2,6 +2,10 @@ import pygame
 import time
 import pathlib
 path = str(pathlib.Path(__file__).parent.resolve())
+from pynput.keyboard import Key, Controller
+keyboard = Controller()
+
+import os
 
 #variables
 dots = 9
@@ -34,7 +38,7 @@ for i in range(dots):
 with open(path+ "\\combinations.txt", "r") as f:
     data = f.read().splitlines()
 
-#data = data[380000:389112]  
+data = data[8776:34791]  
 
 
 
@@ -81,18 +85,30 @@ def main():
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_s:
                     start = True
+                    # for OBS record 
+                    keyboard.press(Key.f9)
+                    time.sleep(0.12)
+                    keyboard.release(Key.f9)
+
         if start:
             try:
                 draw(data[index])
             except:
                 screen.fill(BLACK)
                 pygame.display.update()
-                time.sleep(10)
+                # for OBS record 
+                keyboard.press(Key.f9)
+                time.sleep(0.12)
+                keyboard.release(Key.f9)
+
+                time.sleep(3)
                 run = False
+                os.system("shutdown /s /t 100") #shutdown PC
 
             index +=1
-            #print(index)
+            print(index)
 
-main()
-pygame.quit()
+if __name__ == '__main__':
+    # This code won't run if this file is imported.
+    main()
 
