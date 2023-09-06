@@ -34,10 +34,10 @@ for i in range(dots):
         x = X_SPACE
         num = 0
 
-# use [:] to pick just some of elements from list - for instance: data = data[0:1624]
+
 with open(path+ "\\combinations.txt", "r") as f:
     data = f.read().splitlines()
-
+# use [:] to pick just some of elements from list - for instance: data = data[0:1624]
 data = data[8776:34791]  
 
 
