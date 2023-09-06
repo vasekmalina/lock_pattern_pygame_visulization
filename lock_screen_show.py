@@ -1,11 +1,12 @@
 import pygame
 import time
 import pathlib
-path = str(pathlib.Path(__file__).parent.resolve())
-from pynput.keyboard import Key, Controller
-keyboard = Controller()
-
 import os
+from pynput.keyboard import Key, Controller
+
+keyboard = Controller()
+path = str(pathlib.Path(__file__).parent.resolve())
+
 
 #variables
 dots = 9
@@ -85,10 +86,6 @@ def main():
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_s:
                     start = True
-                    # for OBS record 
-                    keyboard.press(Key.f9)
-                    time.sleep(0.12)
-                    keyboard.release(Key.f9)
 
         if start:
             try:
@@ -96,14 +93,9 @@ def main():
             except:
                 screen.fill(BLACK)
                 pygame.display.update()
-                # for OBS record 
-                keyboard.press(Key.f9)
-                time.sleep(0.12)
-                keyboard.release(Key.f9)
 
                 time.sleep(3)
                 run = False
-                os.system("shutdown /s /t 100") #shutdown PC
 
             index +=1
             print(index)
